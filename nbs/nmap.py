@@ -11,7 +11,7 @@ class Nmap(object):
     def scan(self):
         nmap = nmap3.NmapHostDiscovery()  # instantiate nmap object
         for item in self.networks:
-            temp_scan_result = nmap.nmap_no_portscan(item.replace('\n', ''), args="-R --system-dns")
+            temp_scan_result = nmap.nmap_no_portscan(item.replace('\n', ''), args="-PE -sn --system-dns")
             self.scan_results = {**self.scan_results, **temp_scan_result}
             self.scan_results.pop("stats")
             self.scan_results.pop("runtime")
